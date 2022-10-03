@@ -4,10 +4,8 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "develop" ]
 
 jobs:
   build:
@@ -28,8 +26,8 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm start & npx wait-on http://localhost:3000
-    - name: OWASP ZAP Baseline Scan
-      uses: zaproxy/action-baseline@v0.7.0
-      with:
-        target: 'http://localhost:3000'
+   # - run: npm start & npx wait-on http://localhost:3000
+   # - name: OWASP ZAP Baseline Scan
+   #   uses: zaproxy/action-baseline@v0.7.0
+   #   with:
+   #     target: 'http://localhost:3000'
